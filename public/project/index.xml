@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project on Personal website of Di Shao</title>
-    <link>https://hugo-apero-docs.netlify.app/project/</link>
+    <link>https://dishao.netlify.app/project/</link>
     <description>Recent content in Project on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo-apero-docs.netlify.app/project/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>晚期非小细胞肺癌基因组特征及其精准治疗模式的真实世界研究</title>
-      <link>https://hugo-apero-docs.netlify.app/project/clinical_benefit/</link>
+      <link>https://dishao.netlify.app/project/clinical_benefit/</link>
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo-apero-docs.netlify.app/project/clinical_benefit/</guid>
+      <guid>https://dishao.netlify.app/project/clinical_benefit/</guid>
       <description>01研究设计     本研究为单中心、回顾性队列研究。自2016年1月至2019年10月共纳入233例NSCLC患者。利用688 panel对肿瘤组织样本进行基于目标区域捕获测序的突变谱检测。其中171例临床病理和随访资料完整的患者纳入生存分析。
 02研究结果     驱动突变的基因分布
 驱动突变的频率与其他研究相似。最高频突变为EGFR（51％），其次是KRAS（9％），PIK3CA（7％），ALK（7％），MET（6％）和BRAF（5％）（图1）。ALK融合，HER2插入，MEK突变，KIF5B-RET和CD74-ROS1融合与其他驱动突变互斥。TMB high在年轻女性和吸烟患者中更为常见。 TP53，EGFR，BRAF，ROSI和RET突变与TMB状态显著相关。
@@ -26,10 +26,10 @@
     
     <item>
       <title>Prevalence of hereditary breast and ovarian cancer (HBOC) predisposition gene mutations among 882 HBOC high-risk Chinese individuals</title>
-      <link>https://hugo-apero-docs.netlify.app/project/hboc/</link>
+      <link>https://dishao.netlify.app/project/hboc/</link>
       <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo-apero-docs.netlify.app/project/hboc/</guid>
+      <guid>https://dishao.netlify.app/project/hboc/</guid>
       <description>Abstract
 background     Identification of deleterious variants in hereditary breast and ovarian cancer (HBOC) susceptibility genes allows for increased clinical surveillance and early detection, and could predict the response to poly (ADP-ribose) polymerase (PARP) inhibitor in patients with advanced ovarian carcinomas.
 methods     To determine the prevalence and clinical prediction fac- tors for HBOC syndrome, 882 selected individuals underwent multigene panel testing for HBOC risk assessment during the period from January 2015 to March 2018.</description>
@@ -37,10 +37,10 @@ methods     To determine the prevalence and clinical prediction fac- tors for HB
     
     <item>
       <title>Comprehensive genomic profiling of lung cancer using a validated panel to explore therapeutic targets in East Asian patients</title>
-      <link>https://hugo-apero-docs.netlify.app/project/chinese_patient/</link>
+      <link>https://dishao.netlify.app/project/chinese_patient/</link>
       <pubDate>Sun, 03 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo-apero-docs.netlify.app/project/chinese_patient/</guid>
+      <guid>https://dishao.netlify.app/project/chinese_patient/</guid>
       <description>Background
 People of East Asian ethnicity have a different prevalence of and show unique clinical characteristics and tumor histology of oncogenic mutations. However,only limited studies have explored the landscape of genomic alterations in lung adenocarcinoma derived from Asian patients thus far.
 Methods
@@ -49,10 +49,10 @@ In this single-center study,with an aim to elucidate the mutational profile of l
     
     <item>
       <title>A targeted next-generation sequencing method for identifying clinically relevant mutation profiles in lung adenocarcinoma</title>
-      <link>https://hugo-apero-docs.netlify.app/project/cpg_method/</link>
+      <link>https://dishao.netlify.app/project/cpg_method/</link>
       <pubDate>Thu, 03 Mar 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo-apero-docs.netlify.app/project/cpg_method/</guid>
+      <guid>https://dishao.netlify.app/project/cpg_method/</guid>
       <description>Backgroud
 Molecular profiling of lung cancer has become essential for prediction of an individual’s response to targeted therapies. Next-generation sequencing (NGS) is a promising technique for routine diagnostics, but has not been sufficiently evaluated in terms of feasibility, reliability, cost and capacity with routine diagnostic formalin-fixed, paraffin-embedded (FFPE) materials.
 Methods
@@ -61,10 +61,10 @@ Here, we report the validation and application of a test based on Ion Proton tec
     
     <item>
       <title>germline and somatic mutations of multi-gene panel in Chinese patients with epithelial ovarian cancer</title>
-      <link>https://hugo-apero-docs.netlify.app/project/ovarian_cancer/</link>
+      <link>https://dishao.netlify.app/project/ovarian_cancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo-apero-docs.netlify.app/project/ovarian_cancer/</guid>
+      <guid>https://dishao.netlify.app/project/ovarian_cancer/</guid>
       <description>Background
 Multiple targeted gene sequencing is seldom performed in both germline and somatic testing for ovarian cancer. This study is to evaluate the specific genetic alterations, including both somatic and germline mutations, in Chinese patients with epithelial ovarian cancer (EOC) in a prospective cohort study.
 Materials and methods
