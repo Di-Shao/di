@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>communication on Personal website of Di Shao</title>
+    <link>https://hugo-apero-docs.netlify.app/categories/communication/</link>
+    <description>Recent content in communication on Personal website of Di Shao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo-apero-docs.netlify.app/categories/communication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>a learning notes of gtsummary</title>
+      <link>https://hugo-apero-docs.netlify.app/blog/gtsummary/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-apero-docs.netlify.app/blog/gtsummary/</guid>
+      <description># install.packages(&amp;quot;gtsummary&amp;quot;)library(gtsummary)library(tidyverse)Basic UsageYou can also embed plots, for example:
+head(trial)## # A tibble: 6 x 8## trt age marker stage grade response death ttdeath## &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;fct&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt;## 1 Drug A 23 0.16 T1 II 0 0 24 ## 2 Drug B 9 1.11 T2 I 1 0 24 ## 3 Drug A 31 0.277 T1 II 0 0 24 ## 4 Drug A NA 2.</description>
+    </item>
+    
+  </channel>
+</rss>
