@@ -27,11 +27,11 @@ library(lubridate)
 ## Get the data!
 
 ```{r message=FALSE}
-nobel_winners <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv") %>% 
+nobel_winners <- readr::read_csv("nobel_winners.csv") %>% 
   distinct(full_name, prize_year, category, .keep_all = T) %>% 
   mutate(decade = 10*(prize_year%/%10),
          age = prize_year - year(birth_date))
-nobel_winner_all_pubs <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winner_all_pubs.csv") %>% 
+nobel_winner_all_pubs <- readr::read_csv("nobel_winner_all_pubs.csv") %>% 
   mutate(prize_decade = 10*(prize_year %/% 10))
 ```
 
