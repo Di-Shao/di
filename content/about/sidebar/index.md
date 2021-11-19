@@ -15,8 +15,10 @@ link_list:
   url: https://en.wikipedia.org/wiki/Precision_medicine
 - name: NGS
   url: https://en.wikipedia.org/wiki/DNA_sequencing#Next-generation_methods
-- name: R
+- name: R, tidyverse, tidymodels, Rmarkdown
   url: https://en.wikipedia.org/wiki/R
+- name: Reproducibility
+  url: https://en.wikipedia.org/wiki/Reproducibility
 ---
 
 ** index doesn't contain a body, just front matter above.

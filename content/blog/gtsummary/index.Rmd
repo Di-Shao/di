@@ -7,7 +7,7 @@ draft: false
 excerpt: Make publication-ready summary table.
 layout: single
 subtitle:
-title: a learning notes of gtsummary 
+title: a learning note of gtsummary 
 ---
 
 ```{r setup, include=FALSE}

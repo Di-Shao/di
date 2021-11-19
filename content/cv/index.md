@@ -2,6 +2,6 @@
 ![](fig1.jpg)
 
 ![](fig2.jpg)
-[download](https://www.jianguoyun.com/p/DS5kKwwQ98bmBRis8ZoE)
+[download a pdf of this cv](https://www.jianguoyun.com/p/DS5kKwwQ98bmBRis8ZoE)
 
 
