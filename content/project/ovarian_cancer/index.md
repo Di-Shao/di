@@ -17,7 +17,7 @@ links:
 subtitle: 
 tags:
 - ovarian_cancer
-title: germline and somatic mutations of multi-gene panel in Chinese patients with epithelial ovarian cancer
+title: Germline and somatic mutations of multi-gene panel in Chinese patients with epithelial ovarian cancer
 ---
 ![](fig0.png)
 **Background**
