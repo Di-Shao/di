@@ -6,11 +6,11 @@
     <description>Recent content in Categories on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>talks</title>
       <link>https://dishao.netlify.app/categories/talks/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/categories/talks/</guid>
       <description></description>
@@ -89,6 +89,33 @@
     </item>
     
     <item>
+      <title>Camrelizumab</title>
+      <link>https://dishao.netlify.app/categories/camrelizumab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/categories/camrelizumab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EC,</title>
+      <link>https://dishao.netlify.app/categories/ec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/categories/ec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HRD,</title>
+      <link>https://dishao.netlify.app/categories/hrd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/categories/hrd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ovarian cancer,</title>
       <link>https://dishao.netlify.app/categories/ovarian-cancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -98,11 +125,20 @@
     </item>
     
     <item>
-      <title>parpi,</title>
+      <title>PARPi</title>
       <link>https://dishao.netlify.app/categories/parpi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/categories/parpi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Phase II clinical trial,</title>
+      <link>https://dishao.netlify.app/categories/phase-ii-clinical-trial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/categories/phase-ii-clinical-trial/</guid>
       <description></description>
     </item>
     

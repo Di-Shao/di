@@ -6,7 +6,7 @@
     <description>Recent content in 邵 迪 on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Netlify</title>
       <link>https://dishao.netlify.app/collection/day02/01-netlify/</link>
@@ -84,12 +84,21 @@ My content section is: collection  My layout is: single-series   part 2!     doe
     </item>
     
     <item>
+      <title>Data Science in Clinical Research -- a modern dive into data analysis with R and Python ecosystem</title>
+      <link>https://dishao.netlify.app/talk/tk4/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/talk/tk4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Circulating tumor DNA methylation profiles enable early diagnosis, prognosis prediction, and screening for colorectal cancer</title>
       <link>https://dishao.netlify.app/talk/tk1/</link>
       <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/talk/tk1/</guid>
-      <description></description>
+      <description></description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@ head(trial)## # A tibble: 6 x 8## trt age marker stage grade response death tt
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/talk/tk3/</guid>
-      <description></description>
+      <description></description>
     </item>
     
     <item>
@@ -145,7 +154,17 @@ methods     To determine the prevalence and clinical prediction fac- tors for HB
       <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/talk/tk2/</guid>
-      <description></description>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TidyTuesday学习笔记--Nobel_Laureate</title>
+      <link>https://dishao.netlify.app/blog/nobel_laureate/</link>
+      <pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/blog/nobel_laureate/</guid>
+      <description>原视频地址：https://www.bilibili.com/video/BV1P4411m75N?from=search&amp;amp;seid=7741503924513681460&amp;amp;spm_id_from=333.337.0.0
+Load needed packageslibrary(tidyverse)library(lubridate)Get the data!nobel_winners &amp;lt;- readr::read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winners.csv&amp;quot;) %&amp;gt;% distinct(full_name, prize_year, category, .keep_all = T) %&amp;gt;% mutate(decade = 10*(prize_year%/%10),age = prize_year - year(birth_date))nobel_winner_all_pubs &amp;lt;- readr::read_csv(&amp;quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-14/nobel_winner_all_pubs.csv&amp;quot;) %&amp;gt;% mutate(prize_decade = 10*(prize_year %/% 10))Winners per decade by categorynobel_winners %&amp;gt;% group_by(category,decade) %&amp;gt;%summarise(winners = n(),winners_per_year = winners / n_distinct(prize_year)) %&amp;gt;% ggplot(aes(decade, winners_per_year, color= category)) + geom_line() +expand_limits(y=0)## `summarise()` has grouped output by &amp;#39;category&amp;#39;.</description>
     </item>
     
     <item>
@@ -205,11 +224,12 @@ Here, we report the validation and application of a test based on Ion Proton tec
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/cv/</guid>
-      <description>download a pdf of this cv</description>
+      <description>&amp;laquo;&amp;laquo;&amp;laquo;&amp;lt; HEAD =======        6734d544008ab5fc316403d8403e093f408ad23e download a pdf of this cv
+       </description>
     </item>
     
     <item>
-      <title>germline and somatic mutations of multi-gene panel in Chinese patients with epithelial ovarian cancer</title>
+      <title>Germline and somatic mutations of multi-gene panel in Chinese patients with epithelial ovarian cancer</title>
       <link>https://dishao.netlify.app/project/ovarian_cancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -221,6 +241,18 @@ Mutations in a customed 21-gene panel that included BRCA1 , BRCA2 , and 19 other
     </item>
     
     <item>
+      <title>Homologous recombination deficiency status predicts response to platinum‑based chemotherapy in Chinese patients with high‑grade serous ovarian carcinoma</title>
+      <link>https://dishao.netlify.app/project/hrd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/project/hrd/</guid>
+      <description>Background Homologous Recombination Deficiency (HRD) is a predictive biomarker for ovarian cancer treated with PARP inhibitors or for breast cancer treated with first-line platinum-based chemotherapy. However, limited research is documented on platinum-based treatment prediction with HRD as a biomarker in ovarian cancer patients, especially in the Chinese population.
+Methods
+We investigated the association between HRD status and the response of platinum-based chemotherapy in 240 Chinese HGSOC patients.
+Results The Pt-sensitive patients showed higher HRD scores than Pt-resistant ones, but this was not significant(median: 42.</description>
+    </item>
+    
+    <item>
       <title>License</title>
       <link>https://dishao.netlify.app/license/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -228,6 +260,16 @@ Mutations in a customed 21-gene panel that included BRCA1 , BRCA2 , and 19 other
       <guid>https://dishao.netlify.app/license/</guid>
       <description>My blog posts are released under a Creative Commons Attribution-ShareAlike 4.0 International License.
   </description>
+    </item>
+    
+    <item>
+      <title>Neoadjuvant camrelizumab plus chemotherapy for resectable, locally advanced esophageal squamous cell carcinoma (NIC-ESCC2019) A multicenter, phase 2 study</title>
+      <link>https://dishao.netlify.app/project/nic_escc2019/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/project/nic_escc2019/</guid>
+      <description>BACKGROUND Optimal treatment for resectable esophageal squamous cell carcinoma (ESCC) is controversial, especially in the context of potential benefit of combining PD-1 blockade with neoadjuvant therapy.
+METHODS This phase 2 study aimed to assess neoadjuvant camrelizumab plus chemotherapy in this population. Patients (clinical stage II-IVA) received two cycles of neoadjuvant chemoimmunotherapy (NIC) with camrelizumab (200 mg on day 1) plus nab-paclitaxel (260 mg/m2 in total on day 1 and day 8) and cisplatin (75 mg/m2 in total on days 1-3) of each 21-day cycle.</description>
     </item>
     
   </channel>
