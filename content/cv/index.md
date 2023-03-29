@@ -1,15 +1,12 @@
-![](CV_1.jpg)
 
-<<<<<<< HEAD
-![](CV_1.jpg)
+详聊请加我微信
+<div style="position: relative; width: 100%; height: 0; padding-top: 141.4358%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.cn&#x2F;design&#x2F;DAFeinUfmEk&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
 
-![](CV_2.jpg)
-
-=======
-![](CV_2.jpg)
-
->>>>>>> 6734d544008ab5fc316403d8403e093f408ad23e
-![](CV_3.jpg)
 [download a pdf of this cv](https://www.jianguoyun.com/p/DYqE0LAQ98bmBRi159IEIAA)
-
 
