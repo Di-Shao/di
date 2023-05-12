@@ -1,0 +1,158 @@
+---
+author: Di Shao
+categories:
+- communication
+date: "2023-05-12"
+draft: false
+excerpt: Summarize, analyze and visualize MAF files
+layout: single
+subtitle:
+title: Summarize, analyze and visualize MAF files
+---
+
+目前，我们有相当多的流程和工具，从NGS下机fq数据中检测到各类变异，但对变异的vcf文件结合临床数据进行下游分析的软件还比较少。R生态中的maftools包就是用于上述这一过程，对突变进行统计、比较和分析，并将结果以各种形式的图表进行展示。下面的代码将以TCGA卵巢癌的数据来展示我常用的maftools包的功能。
+
+#### maftools包主要函数和功能
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(maftools)
+library(tidyverse)
+```
+
+#### 1. Load MAF file and Explore MAF object
+
+```{r include=FALSE}
+## Show available TCGA cohorts 
+tcgaAvailable() %>% as_tibble() 
+
+#Load TCGA OV MAF file
+maf_oc <- tcgaLoad(study = "OV")
+
+#Shows sample summary.
+getSampleSummary(maf_oc) ## 不显示无突变的样本
+#Shows gene summary.
+getGeneSummary(maf_oc)  
+#shows clinical data associated with samples
+getClinicalData(maf_oc) 
+#Shows all fields in MAF
+getFields(maf_oc)  
+
+```
+
+#### 2. Drawing oncoplots
+
+```{r}
+oncoplot(maf = maf_oc, top = 10, clinicalFeatures =  "ethnicity", sortByAnnotation = T)
+
+```
+
+选择G1至G3的病例并展示其突变图谱
+
+```{r message=FALSE, warning=FALSE}
+
+maf_oc_G <- subsetMaf(maf = maf_oc, clinQuery = "neoplasm_histologic_grade %in% c('G1', 'G2', 'G3')")
+
+oncoplot(maf = maf_oc_G, top = 20, clinicalFeatures = c('neoplasm_histologic_grade', "ethnicity"), sortByAnnotation = T)
+
+```
+
+#### 2. Drawing lollipop plot
+
+```{r}
+lollipopPlot(maf = maf_oc, gene = "TP53", AACol = "HGVSp_Short", refSeqID = "NM_000546")
+
+```
+
+#### 3. 突变互斥和共现分析和展示
+
+```{r}
+somaticInteractions(maf = maf_oc, top = 15)
+```
+
+#### 4. 生存分析和结果展示
+
+单个基因
+
+```{r}
+clinical_data_new <- maf_oc@clinical.data %>% 
+  filter(!is.na(vital_status) & !is.na(days_to_last_followup)) %>% 
+  mutate(vital_status =  if_else(vital_status == "Dead", 1, 0 ))
+
+mafSurvival(maf = maf_oc, clinicalData = clinical_data_new, genes = "TP53", time = "days_to_last_followup", Status = "vital_status")
+
+
+```
+
+多个基因组合
+
+```{r}
+survGroup(maf = maf_oc, clinicalData = clinical_data_new, top = 10, geneSetSize = 2, time = "days_to_last_followup", Status = "vital_status" )
+
+mafSurvGroup(maf = maf_oc, clinicalData = clinical_data_new,  geneSet = c("TP53", "FLG2") , time = "days_to_last_followup", Status = "vital_status")
+```
+
+#### 5. 两个队列突变比较：对比高低两个级别的基因突变率
+
+```{r}
+## Low grade
+maf_low_grade = subsetMaf(maf = maf_oc, clinQuery = "neoplasm_histologic_grade %in% c('G1', 'G2')")
+## High grade
+maf_high_grade = subsetMaf(maf = maf_oc, clinQuery = "neoplasm_histologic_grade %in% 'G3'")
+
+low_vs_high <- mafCompare(m1 = maf_low_grade, m2 = maf_high_grade, m1Name = "Low Grade", m2Name = "High Grade", minMut = 5)
+## Print the results
+low_vs_high
+
+## visualize the results with forest plot
+
+forestPlot(mafCompareRes = low_vs_high, pVal = 0.1)
+
+
+## or visualize the results with co-bar plot
+coBarplot(m1 = maf_low_grade, m2 = maf_high_grade, m1Name = "Low Grade", m2Name = "High Grade")
+```
+
+#### 6. 临床特征富集分析：分析在高级别肿瘤富集突变的基因
+
+```{r}
+
+clinical_data_new <- clinical_data_new %>% 
+  mutate(neoplasm_histologic_grade = case_when(neoplasm_histologic_grade == "G3" ~ "High Grade",               neoplasm_histologic_grade == "G1" ~ "Low Grade",             neoplasm_histologic_grade == "G2" ~ "Low Grade",
+                                               .default = NA)) %>% filter(!is.na(neoplasm_histologic_grade)) 
+grade_ce <- clinicalEnrichment(maf = maf_oc, annotationDat = clinical_data_new, clinicalFeature = 'neoplasm_histologic_grade')
+
+grade_ce$groupwise_comparision[p_value < 0.01] %>% view()
+plotEnrichmentResults(enrich_res = grade_ce, pVal = 0.01)
+```
+
+#### 7. 癌症信号通路富集分析
+
+```{r}
+OncogenicPathways(maf = maf_oc)
+PlotOncogenicPathways(maf = maf_oc, pathways = "PI3K")
+```
+
+#### 8. Mutational signatures分析和结果可视化
+
+```{r}
+library(BSgenome.Hsapiens.UCSC.hg19)
+library("NMF")
+
+oc_tnm <- trinucleotideMatrix(maf = maf_oc, prefix = "chr", add = T, ref_genome = "BSgenome.Hsapiens.UCSC.hg19")
+
+oc_sign <- estimateSignatures(mat = oc_tnm, nTry = 6)
+
+oc_sig <- extractSignatures(mat = oc_tnm, n = 3)
+
+oc_sg30_cosm <- compareSignatures(nmfRes = oc_sig, sig_db = "legacy")
+
+library(pheatmap)
+
+pheatmap::pheatmap(mat = oc_sg30_cosm$cosine_similarities, cluster_rows = F)
+
+plotSignatures(nmfRes = oc_sig, sig_db = "legacy")
+```
