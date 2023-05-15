@@ -6,7 +6,18 @@
     <description>Recent content in communication on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/categories/communication/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/categories/communication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Summarize, analyze and visualize MAF files</title>
+      <link>https://dishao.netlify.app/blog/maftools/</link>
+      <pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/blog/maftools/</guid>
+      <description>目前，我们有相当多的流程和工具，从NGS下机fq数据中检测到各类变异，但对变异的vcf文件结合临床数据进行下游分析的软件还比较少。R生态中的maftools包就是用于上述这一过程，对突变进行统计、比较和分析，并将结果以各种形式的图表进行展示。下面的代码将以TCGA卵巢癌的数据来展示我常用的maftools包的功能。
+maftools包主要函数和功能library(maftools)library(tidyverse)1. Load MAF file and Explore MAF object2. Drawing oncoplotsoncoplot(maf = maf_oc, top = 10, clinicalFeatures = &amp;quot;ethnicity&amp;quot;, sortByAnnotation = T)选择G1至G3的病例并展示其突变图谱
+maf_oc_G &amp;lt;- subsetMaf(maf = maf_oc, clinQuery = &amp;quot;neoplasm_histologic_grade %in% c(&amp;#39;G1&amp;#39;, &amp;#39;G2&amp;#39;, &amp;#39;G3&amp;#39;)&amp;quot;)## --Possible FLAGS among top ten genes:## TTN## MUC16## HMCN1## USH2A## AHNAK2## FLG## -Processing clinical dataoncoplot(maf = maf_oc_G, top = 20, clinicalFeatures = c(&amp;#39;neoplasm_histologic_grade&amp;#39;, &amp;quot;ethnicity&amp;quot;), sortByAnnotation = T)2.</description>
+    </item>
+    
     <item>
       <title>a learning notes of gtsummary</title>
       <link>https://dishao.netlify.app/blog/gtsummary/</link>

@@ -6,7 +6,7 @@
     <description>Recent content in 邵 迪 on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Netlify</title>
       <link>https://dishao.netlify.app/collection/day02/01-netlify/</link>
@@ -81,6 +81,27 @@ install.packages(&amp;quot;distill&amp;quot;)  Restart your R session. If you us
       <description>Hi, I&#39;m the here-bot cat! Use me to find your way in your website.
 Here I am: content/collection\day02\03-blogdown\index.md  To remove me, delete this line inside that file: {{&amp;lt; here &amp;gt;}}
 My content section is: collection  My layout is: single-series   part 2!     does this work?      now for some very cool things     more     get ready!</description>
+    </item>
+    
+    <item>
+      <title>Summarize, analyze and visualize MAF files</title>
+      <link>https://dishao.netlify.app/blog/maftools/</link>
+      <pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/blog/maftools/</guid>
+      <description>目前，我们有相当多的流程和工具，从NGS下机fq数据中检测到各类变异，但对变异的vcf文件结合临床数据进行下游分析的软件还比较少。R生态中的maftools包就是用于上述这一过程，对突变进行统计、比较和分析，并将结果以各种形式的图表进行展示。下面的代码将以TCGA卵巢癌的数据来展示我常用的maftools包的功能。
+maftools包主要函数和功能library(maftools)library(tidyverse)1. Load MAF file and Explore MAF object2. Drawing oncoplotsoncoplot(maf = maf_oc, top = 10, clinicalFeatures = &amp;quot;ethnicity&amp;quot;, sortByAnnotation = T)选择G1至G3的病例并展示其突变图谱
+maf_oc_G &amp;lt;- subsetMaf(maf = maf_oc, clinQuery = &amp;quot;neoplasm_histologic_grade %in% c(&amp;#39;G1&amp;#39;, &amp;#39;G2&amp;#39;, &amp;#39;G3&amp;#39;)&amp;quot;)## --Possible FLAGS among top ten genes:## TTN## MUC16## HMCN1## USH2A## AHNAK2## FLG## -Processing clinical dataoncoplot(maf = maf_oc_G, top = 20, clinicalFeatures = c(&amp;#39;neoplasm_histologic_grade&amp;#39;, &amp;quot;ethnicity&amp;quot;), sortByAnnotation = T)2.</description>
+    </item>
+    
+    <item>
+      <title>从BRCA，HRR到HRD，卵巢癌PARPi维持治疗靶点探索</title>
+      <link>https://dishao.netlify.app/talk/tk5/</link>
+      <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/talk/tk5/</guid>
+      <description>以下Slides来源于公开会议，仅用于个人学习
+</description>
     </item>
     
     <item>
