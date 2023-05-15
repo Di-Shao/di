@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.85.0" />
+<title>Summarize, analyze and visualize MAF files | Personal website of Di Shao</title>
+
+
+<meta property="twitter:site" content="@apreshill">
+<meta property="twitter:creator" content="@apreshill">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="Summarize, analyze and visualize MAF files">
+
+
+<meta property="og:site_name" content="Personal website of Di Shao">
+<meta property="og:title" content="Summarize, analyze and visualize MAF files | Personal website of Di Shao">
+<meta property="og:description" content="Summarize, analyze and visualize MAF files" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://dishao.netlify.app/blog/maftools/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="https://dishao.netlify.app/blog/maftools/featured.png" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://dishao.netlify.app/blog/maftools/featured.png" >
+    
+    
+  <meta itemprop="name" content="Summarize, analyze and visualize MAF files">
+<meta itemprop="description" content="目前，我们有相当多的流程和工具，从NGS下机fq数据中检测到各类变异，但对变异的vcf文件结合临床数据进行下游分析的软件还比较少。R生态中的maftools包就是用于上述这一过程，对突变进行统计、比较和分析，并将结果以各种形式的图表进行展示。下面的代码将以TCGA卵巢癌的数据来展示我常用的maftools包的功能。
+maftools包主要函数和功能library(maftools)library(tidyverse)1. Load MAF file and Explore MAF object2. Drawing oncoplotsoncoplot(maf = maf_oc, top = 10, clinicalFeatures = &quot;ethnicity&quot;, sortByAnnotation = T)选择G1至G3的病例并展示其突变图谱
+maf_oc_G &lt;- subsetMaf(maf = maf_oc, clinQuery = &quot;neoplasm_histologic_grade %in% c(&#39;G1&#39;, &#39;G2&#39;, &#39;G3&#39;)&quot;)## --Possible FLAGS among top ten genes:## TTN## MUC16## HMCN1## USH2A## AHNAK2## FLG## -Processing clinical dataoncoplot(maf = maf_oc_G, top = 20, clinicalFeatures = c(&#39;neoplasm_histologic_grade&#39;, &quot;ethnicity&quot;), sortByAnnotation = T)2."><meta itemprop="datePublished" content="2023-05-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-05-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1394"><meta itemprop="image" content="https://dishao.netlify.app/blog/maftools/featured.png">
+<meta itemprop="keywords" content="" />
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/icons8-cancer-64.png" type="image/x-icon">
+  <link rel="icon" href="/img/icons8-cancer-64.png" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.c41989e55e447ba851529faee9089cf175da56ad7aa754b67d2288a69ba974e6.css" integrity="sha256-xBmJ5V5Ee6hRUp&#43;u6Qic8XXaVq16p1S2fSKIppupdOY=" media="screen">
+  
+  
+  <script src="/panelset.min.078a92db9bd3228df502db3d9e0453c3cf3d910abe3f8deca0ad196c7071ad41.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.38a0323c5b0bbb611c4874ba2d8fdaba57d20cc2b0d704b30250c235ba8b6d49.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="https://dishao.netlify.app" title="Home">
+      <img src="/img/6745552_preview.png" class="dib db-l h2 w-auto" alt="Personal website of Di Shao">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About Me">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blog">Blog</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/talk/" title="Talks">Talks</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/cv/" title="CV">CV</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+<main class="page-main pa4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 ph4-l">
+      <header class="post-header">
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Summarize, analyze and visualize MAF files</h1>
+        
+        <p class="f6 measure lh-copy mv1">By Di Shao in <a href="https://dishao.netlify.app/categories/communication">communication</a> </p>
+        <p class="f7 db mv0 ttu">May 12, 2023</p>
+
+      
+
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<p>目前，我们有相当多的流程和工具，从NGS下机fq数据中检测到各类变异，但对变异的vcf文件结合临床数据进行下游分析的软件还比较少。R生态中的maftools包就是用于上述这一过程，对突变进行统计、比较和分析，并将结果以各种形式的图表进行展示。下面的代码将以TCGA卵巢癌的数据来展示我常用的maftools包的功能。</p>
+<div id="maftools包主要函数和功能" class="section level4">
+<h4>maftools包主要函数和功能</h4>
+<pre class="r"><code>library(maftools)
+library(tidyverse)</code></pre>
+</div>
+<div id="load-maf-file-and-explore-maf-object" class="section level4">
+<h4>1. Load MAF file and Explore MAF object</h4>
+</div>
+<div id="drawing-oncoplots" class="section level4">
+<h4>2. Drawing oncoplots</h4>
+<pre class="r"><code>oncoplot(maf = maf_oc, top = 10, clinicalFeatures =  &quot;ethnicity&quot;, sortByAnnotation = T)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>选择G1至G3的病例并展示其突变图谱</p>
+<pre class="r"><code>maf_oc_G &lt;- subsetMaf(maf = maf_oc, clinQuery = &quot;neoplasm_histologic_grade %in% c(&#39;G1&#39;, &#39;G2&#39;, &#39;G3&#39;)&quot;)</code></pre>
+<pre><code>## --Possible FLAGS among top ten genes:
+##   TTN
+##   MUC16
+##   HMCN1
+##   USH2A
+##   AHNAK2
+##   FLG
+## -Processing clinical data</code></pre>
+<pre class="r"><code>oncoplot(maf = maf_oc_G, top = 20, clinicalFeatures = c(&#39;neoplasm_histologic_grade&#39;, &quot;ethnicity&quot;), sortByAnnotation = T)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="drawing-lollipop-plot" class="section level4">
+<h4>2. Drawing lollipop plot</h4>
+<pre class="r"><code>lollipopPlot(maf = maf_oc, gene = &quot;TP53&quot;, AACol = &quot;HGVSp_Short&quot;, refSeqID = &quot;NM_000546&quot;)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="突变互斥和共现分析和展示" class="section level4">
+<h4>3. 突变互斥和共现分析和展示</h4>
+<pre class="r"><code>somaticInteractions(maf = maf_oc, top = 15)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>##       gene1  gene2       pValue oddsRatio  00 11  01  10        pAdj
+##   1:   FLG2 AHNAK2 0.0002257831 5.6047760 350 10  20  31 0.002988306
+##   2:   RYR2    TTN 0.0016934576 3.7086492 282 16 101  12 0.020054103
+##   3:  KMT2C   RYR2 0.0041419255 5.1870494 364  6  22  19 0.044377773
+##   4:    TTN  OBSCN 0.0058259134 3.1833872 282 14  12 103 0.056992631
+##   5: AHNAK2  OBSCN 0.0073975676 4.4845365 361  6  20  24 0.066578109
+##  ---                                                                
+## 101:    NF1 AHNAK2 1.0000000000 0.9007146 353  2  28  28 1.000000000
+## 102:   RYR2 AHNAK2 1.0000000000 0.9753325 355  2  28  26 1.000000000
+## 103:   RYR2    FLG 1.0000000000 0.9753325 355  2  28  26 1.000000000
+## 104:  SYNE1    FLG 1.0000000000 1.0623593 357  2  28  24 1.000000000
+## 105:  KMT2C  OBSCN 1.0000000000 0.6022792 361  1  25  24 1.000000000
+##                   Event          pair event_ratio
+##   1:       Co_Occurence  AHNAK2, FLG2       10/51
+##   2:       Co_Occurence     RYR2, TTN      16/113
+##   3:       Co_Occurence   KMT2C, RYR2        6/41
+##   4:       Co_Occurence    OBSCN, TTN      14/115
+##   5:       Co_Occurence AHNAK2, OBSCN        6/44
+##  ---                                             
+## 101: Mutually_Exclusive   AHNAK2, NF1        2/56
+## 102: Mutually_Exclusive  AHNAK2, RYR2        2/54
+## 103: Mutually_Exclusive     FLG, RYR2        2/54
+## 104:       Co_Occurence    FLG, SYNE1        2/52
+## 105: Mutually_Exclusive  KMT2C, OBSCN        1/49</code></pre>
+</div>
+<div id="生存分析和结果展示" class="section level4">
+<h4>4. 生存分析和结果展示</h4>
+<p>单个基因</p>
+<pre class="r"><code>clinical_data_new &lt;- maf_oc@clinical.data %&gt;% 
+  filter(!is.na(vital_status) &amp; !is.na(days_to_last_followup)) %&gt;% 
+  mutate(vital_status =  if_else(vital_status == &quot;Dead&quot;, 1, 0 ))
+
+mafSurvival(maf = maf_oc, clinicalData = clinical_data_new, genes = &quot;TP53&quot;, time = &quot;days_to_last_followup&quot;, Status = &quot;vital_status&quot;)</code></pre>
+<pre><code>## TP53 
+##  372 
+##     Group medianTime   N
+## 1: Mutant      744.5 330
+## 2:     WT      793.5  30</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>多个基因组合</p>
+<pre class="r"><code>survGroup(maf = maf_oc, clinicalData = clinical_data_new, top = 10, geneSetSize = 2, time = &quot;days_to_last_followup&quot;, Status = &quot;vital_status&quot; )</code></pre>
+<pre><code>## ------------------
+## genes: 10
+## geneset size: 2
+## 45 combinations
+## Geneset:  TP53,TTN [N= 108 ]
+## Geneset:  TP53,MUC16 [N= 37 ]
+## Geneset:  TP53,FLG2 [N= 38 ]
+## Geneset:  TP53,CSMD3 [N= 35 ]
+## Geneset:  TP53,HMCN1 [N= 29 ]
+## Geneset:  TP53,USH2A [N= 28 ]
+## Geneset:  TP53,AHNAK2 [N= 28 ]
+## Geneset:  TP53,FLG [N= 27 ]
+## Geneset:  TP53,NF1 [N= 29 ]
+## Geneset:  TTN,MUC16 [N= 17 ]
+## Geneset:  TTN,FLG2 [N= 13 ]
+## Geneset:  TTN,CSMD3 [N= 13 ]
+## Geneset:  TTN,HMCN1 [N= 14 ]
+## Geneset:  TTN,USH2A [N= 8 ]
+## Geneset:  TTN,AHNAK2 [N= 11 ]
+## Geneset:  TTN,FLG [N= 14 ]
+## Geneset:  TTN,NF1 [N= 7 ]
+## Geneset:  MUC16,CSMD3 [N= 7 ]
+## Geneset:  MUC16,HMCN1 [N= 5 ]
+## Geneset:  MUC16,AHNAK2 [N= 6 ]
+## Geneset:  MUC16,FLG [N= 5 ]
+## Geneset:  FLG2,HMCN1 [N= 6 ]
+## Geneset:  FLG2,USH2A [N= 6 ]
+## Geneset:  FLG2,AHNAK2 [N= 10 ]
+## Geneset:  FLG2,FLG [N= 5 ]
+## Geneset:  CSMD3,USH2A [N= 6 ]</code></pre>
+<pre><code>##     Gene_combination P_value       hr  WT Mutant
+##  1:        TP53_FLG2 0.00651 4.02e-01 323     37
+##  2:       TP53_HMCN1 0.01700 4.27e-01 335     25
+##  3:        MUC16_FLG 0.01980 3.09e+00 355      5
+##  4:         FLG2_FLG 0.04910 3.93e-08 355      5
+##  5:       FLG2_HMCN1 0.06050 1.86e-01 354      6
+##  6:        TTN_MUC16 0.06080 1.79e+00 344     16
+##  7:      FLG2_AHNAK2 0.09960 3.28e-01 350     10
+##  8:       TP53_CSMD3 0.19700 1.41e+00 328     32
+##  9:       TP53_MUC16 0.23200 1.32e+00 325     35
+## 10:          TTN_FLG 0.23600 1.82e+00 348     12
+## 11:       FLG2_USH2A 0.27900 3.52e-01 354      6
+## 12:         TP53_FLG 0.33100 6.69e-01 334     26
+## 13:      MUC16_HMCN1 0.35000 5.82e-01 355      5
+## 14:      TP53_AHNAK2 0.37700 7.39e-01 334     26
+## 15:         TP53_TTN 0.42100 1.16e+00 266     94
+## 16:      MUC16_CSMD3 0.47300 1.44e+00 354      6
+## 17:       TTN_AHNAK2 0.47600 6.99e-01 350     10
+## 18:     MUC16_AHNAK2 0.50000 6.75e-01 354      6
+## 19:        TTN_USH2A 0.60900 1.35e+00 353      7
+## 20:         TP53_NF1 0.63200 1.14e+00 332     28
+## 21:          TTN_NF1 0.66200 7.33e-01 354      6
+## 22:        TTN_CSMD3 0.75800 8.69e-01 348     12
+## 23:       TP53_USH2A 0.81100 9.17e-01 335     25
+## 24:         TTN_FLG2 0.88700 9.37e-01 347     13
+## 25:        TTN_HMCN1 0.89400 1.06e+00 349     11
+## 26:      CSMD3_USH2A 0.98000 1.02e+00 354      6
+##     Gene_combination P_value       hr  WT Mutant</code></pre>
+<pre class="r"><code>mafSurvGroup(maf = maf_oc, clinicalData = clinical_data_new,  geneSet = c(&quot;TP53&quot;, &quot;FLG2&quot;) , time = &quot;days_to_last_followup&quot;, Status = &quot;vital_status&quot;)</code></pre>
+<pre><code>##     Group medianTime   N
+## 1: Mutant        819  37
+## 2:     WT        686 323</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="两个队列突变比较对比高低两个级别的基因突变率" class="section level4">
+<h4>5. 两个队列突变比较：对比高低两个级别的基因突变率</h4>
+<pre class="r"><code>## Low grade
+maf_low_grade = subsetMaf(maf = maf_oc, clinQuery = &quot;neoplasm_histologic_grade %in% c(&#39;G1&#39;, &#39;G2&#39;)&quot;)</code></pre>
+<pre><code>## --Possible FLAGS among top ten genes:
+##   TTN
+##   AHNAK
+##   AHNAK2
+## -Processing clinical data</code></pre>
+<pre class="r"><code>## High grade
+maf_high_grade = subsetMaf(maf = maf_oc, clinQuery = &quot;neoplasm_histologic_grade %in% &#39;G3&#39;&quot;)</code></pre>
+<pre><code>## --Possible FLAGS among top ten genes:
+##   TTN
+##   MUC16
+##   USH2A
+##   HMCN1
+##   FLG
+## -Processing clinical data</code></pre>
+<pre class="r"><code>low_vs_high &lt;- mafCompare(m1 = maf_low_grade, m2 = maf_high_grade, m1Name = &quot;Low Grade&quot;, m2Name = &quot;High Grade&quot;, minMut = 5)
+## Print the results
+low_vs_high</code></pre>
+<pre><code>## $results
+##       Hugo_Symbol Low Grade High Grade        pval         or      ci.up
+##    1:        TP53        42        320 0.001153077  0.2637461  0.6234233
+##    2:        WNK3         5          3 0.001571047 11.4685573 76.1571876
+##    3:        UBR4         5          9 0.029242603  3.7795864 13.1837978
+##    4:       FRAS1         4          6 0.034091103  4.4803750 19.6553461
+##    5:       FREM1         4          6 0.034091103  4.4803750 19.6553461
+##   ---                                                                   
+## 1300:      ZNF792         0          6 1.000000000  0.0000000  5.4659102
+## 1301:      ZNF862         0          5 1.000000000  0.0000000  7.0280372
+## 1302:       ZNFX1         0          6 1.000000000  0.0000000  5.4659102
+## 1303:       ZZEF1         0          6 1.000000000  0.0000000  5.4659102
+## 1304:        ZZZ3         0          5 1.000000000  0.0000000  7.0280372
+##          ci.low adjPval
+##    1: 0.1163619       1
+##    2: 2.1557059       1
+##    3: 0.9545904       1
+##    4: 0.8979275       1
+##    5: 0.8979275       1
+##   ---                  
+## 1300: 0.0000000       1
+## 1301: 0.0000000       1
+## 1302: 0.0000000       1
+## 1303: 0.0000000       1
+## 1304: 0.0000000       1
+## 
+## $SampleSummary
+##        Cohort SampleSize
+## 1:  Low Grade         54
+## 2: High Grade        344</code></pre>
+<pre class="r"><code>## visualize the results with forest plot
+
+forestPlot(mafCompareRes = low_vs_high, pVal = 0.1)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>## or visualize the results with co-bar plot
+coBarplot(m1 = maf_low_grade, m2 = maf_high_grade, m1Name = &quot;Low Grade&quot;, m2Name = &quot;High Grade&quot;)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+</div>
+<div id="临床特征富集分析分析在高级别肿瘤富集突变的基因" class="section level4">
+<h4>6. 临床特征富集分析：分析在高级别肿瘤富集突变的基因</h4>
+<pre class="r"><code>clinical_data_new &lt;- clinical_data_new %&gt;% 
+  mutate(neoplasm_histologic_grade = case_when(neoplasm_histologic_grade == &quot;G3&quot; ~ &quot;High Grade&quot;,               neoplasm_histologic_grade == &quot;G1&quot; ~ &quot;Low Grade&quot;,             neoplasm_histologic_grade == &quot;G2&quot; ~ &quot;Low Grade&quot;,
+                                               .default = NA)) %&gt;% filter(!is.na(neoplasm_histologic_grade)) 
+grade_ce &lt;- clinicalEnrichment(maf = maf_oc, annotationDat = clinical_data_new, clinicalFeature = &#39;neoplasm_histologic_grade&#39;)</code></pre>
+<pre><code>## 
+## High Grade  Low Grade 
+##        308         41</code></pre>
+<pre class="r"><code>grade_ce$groupwise_comparision[p_value &lt; 0.01] %&gt;% view()
+plotEnrichmentResults(enrich_res = grade_ce, pVal = 0.01)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="癌症信号通路富集分析" class="section level4">
+<h4>7. 癌症信号通路富集分析</h4>
+<pre class="r"><code>OncogenicPathways(maf = maf_oc)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre><code>##        Pathway  N n_affected_genes fraction_affected Mutated_samples
+##  1:       NRF2  3                2         0.6666667               5
+##  2:   TGF-Beta  7                5         0.7142857               9
+##  3:       TP53  6                5         0.8333333             375
+##  4:        MYC 13                7         0.5384615              24
+##  5: Cell_Cycle 15               10         0.6666667              31
+##  6:       PI3K 29               23         0.7931034              69
+##  7:      Hippo 38               35         0.9210526             147
+##  8:        WNT 68               45         0.6617647             104
+##  9:      NOTCH 71               51         0.7183099             149
+## 10:    RTK-RAS 85               69         0.8117647             190
+##     Fraction_mutated_samples
+##  1:               0.01216545
+##  2:               0.02189781
+##  3:               0.91240876
+##  4:               0.05839416
+##  5:               0.07542579
+##  6:               0.16788321
+##  7:               0.35766423
+##  8:               0.25304136
+##  9:               0.36253041
+## 10:               0.46228710</code></pre>
+<pre class="r"><code>PlotOncogenicPathways(maf = maf_oc, pathways = &quot;PI3K&quot;)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+</div>
+<div id="mutational-signatures分析和结果可视化" class="section level4">
+<h4>8. Mutational signatures分析和结果可视化</h4>
+<pre class="r"><code>library(BSgenome.Hsapiens.UCSC.hg19)
+library(&quot;NMF&quot;)
+
+oc_tnm &lt;- trinucleotideMatrix(maf = maf_oc, prefix = &quot;chr&quot;, add = T, ref_genome = &quot;BSgenome.Hsapiens.UCSC.hg19&quot;)</code></pre>
+<pre><code>## -Extracting 5&#39; and 3&#39; adjacent bases
+## -Extracting +/- 20bp around mutated bases for background C&gt;T estimation
+## -Estimating APOBEC enrichment scores
+## --Performing one-way Fisher&#39;s test for APOBEC enrichment
+## ---APOBEC related mutations are enriched in  5.134 % of samples (APOBEC enrichment score &gt; 2 ;  21  of  409  samples)
+## -Creating mutation matrix
+## --matrix of dimension 411x96</code></pre>
+<pre class="r"><code>oc_sign &lt;- estimateSignatures(mat = oc_tnm, nTry = 6)</code></pre>
+<pre><code>## -Running NMF for 6 ranks
+## Compute NMF rank= 2  ... + measures ... OK
+## Compute NMF rank= 3  ... + measures ... OK
+## Compute NMF rank= 4  ... + measures ... OK
+## Compute NMF rank= 5  ... + measures ... OK
+## Compute NMF rank= 6  ... + measures ... OK</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre><code>## -Finished in 00:01:57 elapsed (19.4s cpu)</code></pre>
+<pre class="r"><code>oc_sig &lt;- extractSignatures(mat = oc_tnm, n = 3)
+
+oc_sg30_cosm &lt;- compareSignatures(nmfRes = oc_sig, sig_db = &quot;legacy&quot;)
+
+library(pheatmap)
+
+pheatmap::pheatmap(mat = oc_sg30_cosm$cosine_similarities, cluster_rows = F)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<pre class="r"><code>plotSignatures(nmfRes = oc_sig, sig_db = &quot;legacy&quot;)</code></pre>
+<p><img src="https://dishao.netlify.app/blog/maftools/index_files/figure-html/unnamed-chunk-12-3.png" width="672" /></p>
+</div>
+
+        
+        <details closed class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">May 12, 2023</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">7 minute read, 1394 words</dd>
+  </dl>
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Categories:</dt>
+    <dd class="fw5 ml0"> <a href="https://dishao.netlify.app/categories/communication">communication</a> </dd>
+  </dl>
+  
+  
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    
+  </dl>
+</details>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="https://dishao.netlify.app/blog/gtsummary/">a learning notes of gtsummary &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+      
+<div class="post-comments pa0 pa4-l mt4">
+  
+  <script src="https://utteranc.es/client.js"
+          repo="apreshill/apero"
+          issue-term="pathname"
+          theme="boxy-light"
+          label="comments :crystal_ball:"
+          crossorigin="anonymous"
+          async
+          type="text/javascript">
+  </script>
+  
+</div>
+
+    
+  </section>
+</main>
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2023 Di Shao, Shenzhen
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.jianguoyun.com/p/DX1SvlkQ98bmBRjO6pcE" title="weixin" target="_blank" rel="noopener">
+      <i class="fab fa-weixin fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.linkedin.com/in/%E8%BF%AA-%E9%82%B5-0a68259a/" title="linkedin" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://orcid.org/0000-0002-1485-2074" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/Di-Shao" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="/blog/index.xml" title="rss" >
+      <i class="fas fa-rss fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+    </div>
+  </nav>
+</footer>
+
+      </div>
+    </body>
+</html>
