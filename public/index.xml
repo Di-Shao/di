@@ -6,7 +6,7 @@
     <description>Recent content in 邵 迪 on Personal website of Di Shao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 12 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://dishao.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Netlify</title>
       <link>https://dishao.netlify.app/collection/day02/01-netlify/</link>
@@ -84,6 +84,16 @@ My content section is: collection  My layout is: single-series   part 2!     doe
     </item>
     
     <item>
+      <title>精准医学时代下的肺癌科研思路</title>
+      <link>https://dishao.netlify.app/talk/tk6/</link>
+      <pubDate>Sun, 16 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://dishao.netlify.app/talk/tk6/</guid>
+      <description>Slides素材来源于公开途径，仅用于个人学习
+</description>
+    </item>
+    
+    <item>
       <title>Summarize, analyze and visualize MAF files</title>
       <link>https://dishao.netlify.app/blog/maftools/</link>
       <pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate>
@@ -100,7 +110,7 @@ maf_oc_G &amp;lt;- subsetMaf(maf = maf_oc, clinQuery = &amp;quot;neoplasm_histol
       <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://dishao.netlify.app/talk/tk5/</guid>
-      <description>以下Slides来源于公开会议，仅用于个人学习
+      <description>以下Slides素材来源于公开途径，仅用于个人学习
 </description>
     </item>
     
